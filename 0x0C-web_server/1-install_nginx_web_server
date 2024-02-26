@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-# installs nginx and configures it on a remote server
-
-sudo apt-get update
+#install nginx and redirects to holberton school string
+sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-
-echo "Hello World!" > /var/www/html/index.html
-sudo service nginx start
+file1=/usr/share/nginx/html/index.html
+sudo bash -c "echo 'Holberton School ftw!' > $file1"
+service nginx start
