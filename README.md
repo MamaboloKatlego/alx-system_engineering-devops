@@ -1,1 +1,1 @@
-0x0C. Web server
+0x00. Shell, basics
