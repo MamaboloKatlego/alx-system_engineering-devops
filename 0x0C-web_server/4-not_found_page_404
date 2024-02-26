@@ -13,3 +13,4 @@ sudo sed -i '53r /dev/stdin' /etc/nginx/sites-enabled/default <<< "        error
                  internal;
         }"
 sudo service nginx restart
+
