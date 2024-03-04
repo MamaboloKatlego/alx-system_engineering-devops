@@ -1,27 +1,18 @@
-# Task 2
-
-exec {'update_system':
-  command => '/usr/bin/apt-get -y update',
+# Write 2-puppet_custom_http_response_header.pp so that it configures a brand new Ubuntu machine
+# name of the custom HTTP header must be X-Served-By
+# value of the custom HTTP header must be the hostname of the server Nginx is running on
+exec {'update':
+  command => '/usr/bin/apt-get update',
 }
-
-package { 'nginx':
-  ensure => 'installed',
+-> package { 'nginx':
+  # Install Nginx package
+  ensure => installed,
 }
-
-service { 'nginx':
-  ensure  => 'running',
-  enable  => true,
-  require => Package['nginx'],
+-> file_line { 'http_header':
+  path  => '/etc/nginx/nginx.conf',
+  match => 'http {',
+  line  => "http {\n\tadd_header X-Served-By \"${hostname}\";",
 }
-
-file { '/var/www/html/index.html' :
-  content => 'Hello World!',
-}
-
-file_line { 'Creating header':
-  	ensure => present,
-  	path   => '/etc/nginx/sites-available/default',
-  	line   => "\tadd_header X-Served-By ${hostname};",
-  	after  => 'server_name _;',
-	require => Service['nginx'],
+-> exec {'run':
+  command => '/usr/sbin/service nginx restart',
 }
