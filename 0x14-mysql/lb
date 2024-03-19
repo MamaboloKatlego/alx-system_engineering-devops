@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# connect me to load balancer server
+ssh ubuntu@100.26.223.155 -i ~/.ssh/school
