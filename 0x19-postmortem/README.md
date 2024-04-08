@@ -1,3 +1,6 @@
+![2481db50-2a6c-417b-a65a-c0e1817f703c.jpg](https://github.com/MamaboloKatlego/alx-system_engineering-devops/assets/132917857/9839d907-9fba-41b4-b769-380afac353a6)
+
+
 Post-Mortem: The Great Load Balancer Blunder
 
 When Technology Throws a Curveball
@@ -35,4 +38,4 @@ Tasks:
 Conduct a thorough load balancer configuration review, rooting out any bias.
 Implement automated checks to ensure load balancer settings stay on the straight and narrow.
 Document load balancer best practices, because knowledge is power (and prevention).
-Remember, even in the darkest of tech mysteries, there's always a solution – and maybe a few laughs along the way!
+Remember, even in the darkest of tech mysteries, there's always a solution – and maybe a few laughs along the way!🧑‍💻
