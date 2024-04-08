@@ -19,12 +19,15 @@ Timeline:
 - April 7th, 2024, 01:00 UTC: Victory! Load balancer configurations were adjusted, restoring balance to the force.
 
 Root Cause and Resolution:
+
 The load balancer, in a moment of misguided generosity, had been unfairly favoring certain backend servers. This led to an imbalance in traffic distribution, causing some servers to buckle under pressure.
 
 To right this wrong, engineers adjusted the load balancer configurations to spread the love evenly among all backend servers. Peace was restored, and servers rejoiced in their newfound workload harmony.
 
 Corrective and Preventative Measures:
+
 Improvements/Fixes:
+
 1.Regular load balancer configuration audits to catch any mischievous settings.
 
 2.Beef up monitoring systems to keep a closer eye on traffic distribution and server health.
@@ -32,6 +35,7 @@ Improvements/Fixes:
 3.Establish clear procedures for incident escalation – because sometimes, you just need to call in the big guns.
 
 Tasks:
+
 1.Conduct a thorough load balancer configuration review, rooting out any bias.
 
 2.Implement automated checks to ensure load balancer settings stay on the straight and narrow.
