@@ -26,11 +26,16 @@ To right this wrong, engineers adjusted the load balancer configurations to spre
 Corrective and Preventative Measures:
 Improvements/Fixes:
 1.Regular load balancer configuration audits to catch any mischievous settings.
+
 2.Beef up monitoring systems to keep a closer eye on traffic distribution and server health.
+
 3.Establish clear procedures for incident escalation – because sometimes, you just need to call in the big guns.
+
 Tasks:
 1.Conduct a thorough load balancer configuration review, rooting out any bias.
+
 2.Implement automated checks to ensure load balancer settings stay on the straight and narrow.
+
 3.Document load balancer best practices, because knowledge is power (and prevention).
 
 Remember, even in the darkest of tech mysteries, there's always a solution – and maybe a few laughs along the way!🧑‍💻
