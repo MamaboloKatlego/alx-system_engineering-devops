@@ -1,35 +1,54 @@
+#!/usr/bin/env bash
+# Define variables
+NGINX_CONFIG_FILE="/etc/nginx/sites-available/2-app_server-nginx_config"
+NGINX_SITES_ENABLED="/etc/nginx/sites-enabled/"
+NGINX_SERVICE="nginx"
+
+# Create Nginx configuration file
+cat <<EOL | sudo tee "$NGINX_CONFIG_FILE"
 server {
-        listen 80 default_server;
+    listen 80;
+    server_name your_server_ip; # Replace with your server's IP address or domain name
 
-        # 0x1A-application_server - 2-app_server-nginx_config
-        location = /airbnb-onepage/ {
-                 proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
-        }
+    location /airbnb-onepage/ {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        # Add any additional proxy_set_header directives if needed
+    }
 
-        # 404 Page:
-        error_page 404 /custom_404.html; location = /custom_404.html {
+    location / {
+        # Additional configurations for other routes if needed
+        # ...
+    }
+
+    error_page 404 /404.html;
+    location = /404.html {
         root /usr/share/nginx/html;
         internal;
-        }
+    }
 
-        # Header:
-        add_header X-Served-By "37419-web-01";
+    location = /favicon.ico {
+        log_not_found off;
+        access_log off;
+    }
 
-        # rewrite:
-        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+    location = /robots.txt {
+        log_not_found off;
+        access_log off;
+    }
 
-        listen [::]:80 default_server;
-
-        root /var/www/html;
-
-        # Add index.php to the list if you are using PHP
-        index index.html index.htm index.nginx-debian.html;
-
-        server_name _;
-
-        location / {
-                # First attempt to serve request as file, then
-                # as directory, then fall back to displaying a 404.
-                try_files $uri $uri/ =404;
-        }
+    # Additional configurations for other server-related settings
+    # ...
 }
+EOL
+
+# Check if the symbolic link exists before creating
+if [ ! -e "$NGINX_SITES_ENABLED/2-app_server-nginx_config" ]; then
+    sudo ln -s "$NGINX_CONFIG_FILE" "$NGINX_SITES_ENABLED"
+fi
+
+# Restart Nginx to apply changes
+sudo systemctl restart "$NGINX_SERVICE"
+
+echo "Nginx configuration completed."
